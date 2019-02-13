@@ -23,5 +23,26 @@ public class FibonacciFactoryTest {
         Assert.assertFalse(fibonacciUnderTest instanceof FibonacciIterational);
     }
 
+    @Test
+    public void shouldReturn8When6thProductWasRequestedIterationallyUsingFactory(){
+        //given
+        final int expectedProduct = 8;
+        final int requestProduct = 6;
+        final FibonacciType type = FibonacciType.ITERATIONAL;
+
+        Fibonacci fibonacciUnderTest = FibonacciFactory.produce(type);
+
+        //when
+        int result = fibonacciUnderTest.generate(requestProduct);
+
+        //then
+
+        Assert.assertEquals(expectedProduct, result);
+        Assert.assertTrue(fibonacciUnderTest instanceof Fibonacci);
+        Assert.assertFalse(fibonacciUnderTest instanceof FibonacciRecursive);
+        Assert.assertTrue(fibonacciUnderTest instanceof FibonacciIterational);
+
+    }
+
 
 }
